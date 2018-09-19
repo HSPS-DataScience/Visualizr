@@ -1,11 +1,26 @@
 Package: Visualizr
 Type: Package
-Title: What the Package Does (Title Case)
+Title: R Package to Visualize and Explore Raw Data
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Authors@R: as.person(c(
+    "John Wood <jmw.home@gmail.com> [aut, cre]", 
+    "Trenton Pulsipher <trenton.pulsipher@henryschein.com> [aut]"
+  ))
+Maintainer: John Wood <jmw.home@gmail.com>
+Description: Visualizr provides an exaustive set of useful statistics and plots
+    on new data to help streamline EDA. The primary goal of the package is to 
+    provide better understanding of what variables and data are important in a
+    shorter amount of time. 
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+Depends: R (>= 3.4) 
+Imports: dplyr, 
+    DT, 
+    lubridate, 
+    stringr,
+    tidyverse,
+    tidytext, 
+    trelliscopejs,
+    wordcloud
+Suggests: tidyverse 
