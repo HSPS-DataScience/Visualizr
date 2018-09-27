@@ -2,8 +2,8 @@
 #'
 #' @param data A tibble
 #' @return datatable
-#' @examples
-#' visualize(tbl)
+#' @import DT
+#' @export
 create_sampled_datatable <- function(data) {
   DT::datatable(
     data %>%
@@ -22,8 +22,6 @@ create_sampled_datatable <- function(data) {
 #' @return datatable
 #' @import dplyr
 #' @export
-#' @examples
-#' visualize(tbl)
 create_columns_summary_table <- function(data) {
   data_summary <- data %>%
     summarise_all( funs(
@@ -52,8 +50,6 @@ create_columns_summary_table <- function(data) {
 #' @return trelliscope interactive visualization
 #' @import drplyr ggplot2 utility_functions.R
 #' @export
-#' @examples
-#' visualize(tbl)
 create_bar_chart_levels_ts <- function(data) {
   # plot basic bar chart of the levels of each factor by groups of 3
   for (col_names in .split_categorical_cols(data)) {
@@ -86,8 +82,6 @@ create_bar_chart_levels_ts <- function(data) {
 #' @return wordcloud
 #' @import dplyr wordcloud
 #' @export
-#' @examples
-#' visualize(tbl)
 create_wordcloud <- function(data) {
   data(stop_words)
   # make text string
@@ -104,27 +98,23 @@ create_wordcloud <- function(data) {
     with(wordcloud(word, n, max.words = 100, rot.per = 0))
 }
 
-#' Generate wordcloud from all character data type columns
+#' Generate histogram from all numeric columns of data
 #'
 #' @param data A tibble
-#' @return wordcloud
-#' @import dplyr wordcloud
+#' @return ggplot histogram
+#' @import dplyr ggplot
 #' @export
-#' @examples
-#' visualize(tbl)
 create_hist_from_numeric <- function(data) {
-  x2 <- data %>%
+  data %>%
     select_if(is.numeric) %>%
     .select_non_id_columns() %>%
     gather() %>%
-    filter(value > 0)
-
-  ggplot(data = x2,
-         aes(x = value)) +
-    geom_histogram() +
-    scale_y_continuous(labels = scales::comma) +
-    scale_x_log10(breaks = c(0.1, 1, 10, 100, 1000, 10000),
-                  labels = c(0.1, 1, 10, 100, 1000, 10000)) +
-    facet_wrap(~ key, scales = "free", ncol = 2) +
-    theme_bw()
+    filter(value >= 0) %>%
+    ggplot(aes(x = value)) +
+      geom_histogram(binwidth = .25) +
+      scale_y_continuous(labels = scales::comma) +
+      scale_x_log10(breaks = c(0.1, 1, 10, 100, 1000, 10000),
+                    labels = c(0.1, 1, 10, 100, 1000, 10000)) +
+      facet_wrap(~ key, scales = "free", ncol = 3) +
+      theme_bw()
 }
