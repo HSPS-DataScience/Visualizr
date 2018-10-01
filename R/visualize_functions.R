@@ -55,10 +55,7 @@ create_bar_chart_levels_ts <- function(data) {
   for (col_names in .split_categorical_cols(data)) {
     data %>%
       select(col_names) %>%
-      gather() %>%
-      group_by(key, value) %>%
-      mutate(Count = length(value)) %>%
-      slice(1) %>%
+      .gather_group_by_count() %>%
       ungroup() %>%
     ggplot(aes(x = value, y = Count)) +
       geom_bar(stat = "identity", alpha = 0.5) +
@@ -104,17 +101,41 @@ create_wordcloud <- function(data) {
 #' @return ggplot histogram
 #' @import dplyr ggplot
 #' @export
-create_hist_from_numeric <- function(data) {
+create_hist_from_numeric <- function(data, bin_width = .25, num_bins = 30) {
   data %>%
     select_if(is.numeric) %>%
     .select_non_id_columns() %>%
     gather() %>%
     filter(value >= 0) %>%
     ggplot(aes(x = value)) +
-      geom_histogram(binwidth = .25) +
+      geom_histogram(binwidth = bin_width, bins = num_bins) +
       scale_y_continuous(labels = scales::comma) +
       scale_x_log10(breaks = c(0.1, 1, 10, 100, 1000, 10000),
                     labels = c(0.1, 1, 10, 100, 1000, 10000)) +
       facet_wrap(~ key, scales = "free", ncol = 3) +
       theme_bw()
 }
+
+#' Generate histogram from all numeric columns of data
+#'
+#' @param data A tibble
+#' @return ggplot histogram
+#' @import dplyr ggplot lubridate
+#' @export
+create_time_series <- function(data) {
+  data %>%
+    mutate(actDate = mdy_hms(`Activity Date`)) %>%
+    separate(actDate, into = c("ymd", "Time"), sep = c(" "), remove = F) %>%
+    mutate(ymd = ymd(ymd)) %>%
+    select(ymd) %>%
+    .gather_group_by_count() %>%
+    ungroup() %>%
+  ggplot(aes(x = value, y = Count)) +
+    geom_line() +
+    geom_smooth(method = "loess") +
+    theme_bw() +
+    labs(x = "", y = "Number of Activity IDs")
+}
+
+
+
