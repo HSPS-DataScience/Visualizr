@@ -48,7 +48,7 @@ create_columns_summary_table <- function(data) {
 #'
 #' @param data A tibble
 #' @return trelliscope interactive visualization
-#' @import drplyr ggplot2 utility_functions.R
+#' @import drplyr ggplot2 utility_public.R utility_private.R
 #' @export
 create_bar_chart_levels_ts <- function(data) {
   # plot basic bar chart of the levels of each factor by groups of 3
@@ -99,7 +99,7 @@ create_wordcloud <- function(data) {
 #'
 #' @param data A tibble
 #' @return ggplot histogram
-#' @import dplyr ggplot
+#' @import dplyr ggplot utility_public.R utility_private.R
 #' @export
 create_hist_from_numeric <- function(data, bin_width = .25, num_bins = 30) {
   data %>%
@@ -120,7 +120,7 @@ create_hist_from_numeric <- function(data, bin_width = .25, num_bins = 30) {
 #'
 #' @param data A tibble
 #' @return ggplot histogram
-#' @import dplyr ggplot lubridate
+#' @import dplyr ggplot lubridate utility_public.R utility_private.R
 #' @export
 create_time_series <- function(data) {
   data %>%

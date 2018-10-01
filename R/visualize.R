@@ -2,7 +2,7 @@
 #'
 #' @param data A tibble
 #' @return RMarkdown file with finished visualizations and summary statistics
-#' @import tidyverse trelliscopejs visualize_funcitons.R
+#' @import tidyverse trelliscopejs visualize_functions.R
 #' @export
 #' @examples
 #' visualize(tbl)
