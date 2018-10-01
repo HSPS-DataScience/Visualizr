@@ -21,3 +21,5 @@ visualize <- function(data) {
   # apply every function in func_list over the data to create all visualizations
   lapply(func_list, function(f) f(data_sample))
 }
+
+# knitr::opts_chunk$set(echo = F, message = F, warning = F, error = F, fig.height = 3, fig.width = 9.5, cache = F)
