@@ -15,7 +15,7 @@
 #'   <chr> <dbl> <int>
 #' 1 am        0    19
 #' 2 am        1    13
-.gather_group_by_count <- function(data) {
+gather_group_by_count <- function(data) {
   data %>%
     gather() %>%
     group_by(key, value) %>%

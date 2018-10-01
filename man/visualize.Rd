@@ -4,7 +4,7 @@
 \alias{visualize}
 \title{Read in a tibble and generate summary statistics and visualizations}
 \usage{
-visualize(data = tibble())
+visualize(data)
 }
 \arguments{
 \item{data}{A tibble}

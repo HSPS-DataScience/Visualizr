@@ -3,7 +3,6 @@
 #' @param data A tibble
 #' @return datatable
 #' @import DT
-#' @export
 create_sampled_datatable <- function(data) {
   DT::datatable(
     data %>%
@@ -21,7 +20,6 @@ create_sampled_datatable <- function(data) {
 #' @param data A tibble
 #' @return datatable
 #' @import dplyr
-#' @export
 create_columns_summary_table <- function(data) {
   data_summary <- data %>%
     summarise_all( funs(
@@ -48,14 +46,13 @@ create_columns_summary_table <- function(data) {
 #'
 #' @param data A tibble
 #' @return trelliscope interactive visualization
-#' @import drplyr ggplot2 utility_public.R utility_private.R
-#' @export
+#' @import dplyr ggplot2
 create_bar_chart_levels_ts <- function(data) {
   # plot basic bar chart of the levels of each factor by groups of 3
   for (col_names in .split_categorical_cols(data)) {
     data %>%
       select(col_names) %>%
-      .gather_group_by_count() %>%
+      gather_group_by_count() %>%
       ungroup() %>%
     ggplot(aes(x = value, y = Count)) +
       geom_bar(stat = "identity", alpha = 0.5) +
@@ -78,7 +75,6 @@ create_bar_chart_levels_ts <- function(data) {
 #' @param data A tibble
 #' @return wordcloud
 #' @import dplyr wordcloud
-#' @export
 create_wordcloud <- function(data) {
   data(stop_words)
   # make text string
@@ -98,9 +94,8 @@ create_wordcloud <- function(data) {
 #' Generate histogram from all numeric columns of data
 #'
 #' @param data A tibble
-#' @return ggplot histogram
-#' @import dplyr ggplot utility_public.R utility_private.R
-#' @export
+#' @return ggplot2 histogram
+#' @import dplyr ggplot2
 create_hist_from_numeric <- function(data, bin_width = .25, num_bins = 30) {
   data %>%
     select_if(is.numeric) %>%
@@ -119,16 +114,15 @@ create_hist_from_numeric <- function(data, bin_width = .25, num_bins = 30) {
 #' Generate histogram from all numeric columns of data
 #'
 #' @param data A tibble
-#' @return ggplot histogram
-#' @import dplyr ggplot lubridate utility_public.R utility_private.R
-#' @export
+#' @return ggplot2 histogram
+#' @import dplyr ggplot2 lubridate
 create_time_series <- function(data) {
   data %>%
     mutate(actDate = mdy_hms(`Activity Date`)) %>%
     separate(actDate, into = c("ymd", "Time"), sep = c(" "), remove = F) %>%
     mutate(ymd = ymd(ymd)) %>%
     select(ymd) %>%
-    .gather_group_by_count() %>%
+    gather_group_by_count() %>%
     ungroup() %>%
   ggplot(aes(x = value, y = Count)) +
     geom_line() +
