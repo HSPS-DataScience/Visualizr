@@ -20,14 +20,6 @@
   split(data_colnames, cut(seq_along(data_colnames), num_groups, labels = FALSE))
 }
 
-#' Determines if a column is a dates represented as characters or merely characters
-#'
-#' @param col a column of data (vector)
-#' @return Boolean
-.is_date_time_col <- function(col) {
-
-}
-
 #' In some cases, it is important to exclude ID variables from datasets. .select_non_id_columns()
 #'   takes a tibble and selects only column names which do not mention as being IDs.
 #'
@@ -37,4 +29,6 @@
   data %>%
     select(-contains("id"))
 }
+
+
 
