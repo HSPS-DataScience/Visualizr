@@ -22,7 +22,8 @@ create_sampled_datatable <- function(data) {
 #' @import dplyr
 create_columns_summary_table <- function(data) {
   data_summary <- data %>%
-    summarise_all( funs(
+    select_if(is.numeric) %>%
+    summarise_all(funs(
       numUnique = length(unique(.)),
       nas = sum(is.na(.)),
       max = max(., na.rm = T),
@@ -118,17 +119,13 @@ create_hist_from_numeric <- function(data, bin_width = .25, num_bins = 30) {
 #' @import dplyr ggplot2 lubridate
 create_time_series <- function(data) {
   data %>%
-    mutate(actDate = mdy_hms(`Activity Date`)) %>%
-    separate(actDate, into = c("ymd", "Time"), sep = c(" "), remove = F) %>%
-    mutate(ymd = ymd(ymd)) %>%
-    select(ymd) %>%
+    select_if(is.Date) %>%
     gather_group_by_count() %>%
     ungroup() %>%
   ggplot(aes(x = value, y = Count)) +
     geom_line() +
     geom_smooth(method = "loess") +
-    theme_bw() +
-    labs(x = "", y = "Number of Activity IDs")
+    theme_bw()
 }
 
 

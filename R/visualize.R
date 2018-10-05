@@ -15,7 +15,8 @@ visualize <- function(data) {
     create_sampled_datatable,
     create_columns_summary_table,
     # create_bar_chart_levels_ts,
-    create_wordcloud
+    create_wordcloud,
+    create_time_series
   )
 
   # apply every function in func_list over the data to create all visualizations
