@@ -2,6 +2,9 @@
 #'
 #' @param col a column of data (vector)
 #' @return Boolean
+#' @examples
+#' data %>%
+#'   select_if(.is_categorical_col)
 .is_categorical_col <- function(col) {
   is.character(col) | is.factor(col)
 }
