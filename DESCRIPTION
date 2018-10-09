@@ -6,7 +6,7 @@ Authors@R: as.person(c(
     "John Wood <jmw.home at gmail dot com> [aut, cre]", 
     "Trenton Pulsipher <trenton.pulsipher at henryschein dot com> [aut]"
   ))
-Maintainer: John Wood <jmw.home at gmail dot com>
+Maintainer: John Wood <jmw.home@gmail.com>
 Description: Visualizr provides a set of useful statistics and plots
     on new data to help automate EDA using Rmarkdown files. The primary goal of
     the package is to provide better understanding of what variables and data 
