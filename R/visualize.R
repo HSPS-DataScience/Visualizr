@@ -1,26 +1,17 @@
-#' Read in a tibble and generate summary statistics and visualizations
+#' Generate Rmarkdown report and Rmarkdown standalone file from a single command
 #'
-#' @param data A tibble
-#' @return RMarkdown file with finished visualizations and summary statistics
-#' @import tidyverse trelliscopejs
+#' @param rscript_path path to the rscript for Rmd conversion and redending
+#' @param new_filename path to new Rmd file being created
+#' @import reticulate
 #' @export
-#' @examples
-#' visualize(tbl)
-visualize <- function(data) {
-  # my_data <- read_csv("data/Accounts-20180423.csv") %>% as.tibble()
+visualize <- function(rscript_path = "R/visualize_functions.R", new_filename = "test.Rmd") {
+  reticulate::source_python("Python/parser.py")
+  parser <- Parser(rscript_path, new_filename)
 
-  data_sample <- data %>% sample_n(10000)
+  # create new Rmd file
+  parser$write_to_new_rmd()
 
-  func_list <- list(
-    create_sampled_datatable,
-    create_columns_summary_table,
-    # create_bar_chart_levels_ts,
-    create_wordcloud,
-    create_time_series
-  )
-
-  # apply every function in func_list over the data to create all visualizations
-  lapply(func_list, function(f) f(data_sample))
+  # knit newly created Rmd file
+  # rmarkdown::render(new_filename)
 }
 
-# knitr::opts_chunk$set(echo = F, message = F, warning = F, error = F, fig.height = 3, fig.width = 9.5, cache = F)

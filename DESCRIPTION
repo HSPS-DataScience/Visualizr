@@ -1,16 +1,17 @@
 Package: Visualizr
 Type: Package
-Title: R Package To Visualize And Explore Raw Data
+Title: R Package To Reporting and Templates In Rmarkdown 
 Version: 0.1.0
 Authors@R: as.person(c(
-    "John Wood <jmw.home@gmail.com> [aut, cre]", 
-    "Trenton Pulsipher <trenton.pulsipher@henryschein.com> [aut]"
+    "John Wood <jmw.home at gmail dot com> [aut, cre]", 
+    "Trenton Pulsipher <trenton.pulsipher at henryschein dot com> [aut]"
   ))
 Maintainer: John Wood <jmw.home@gmail.com>
-Description: Visualizr provides an exaustive set of useful statistics and plots
-    on new data to help streamline EDA. The primary goal of the package is to 
-    provide better understanding of what variables and data are important in a
-    shorter amount of time. 
+Description: Visualizr provides a set of useful statistics and plots
+    on new data to help automate EDA using Rmarkdown files. The primary goal of
+    the package is to provide better understanding of what variables and data 
+    are important in less time, while giving the user the ability to edit 
+    templated Rmd files and tune generic plots. 
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
@@ -19,6 +20,7 @@ Depends: R (>= 3.4)
 Imports: dplyr, 
     DT, 
     lubridate, 
+    reticulate, 
     stringr,
     tidyverse,
     tidytext, 
