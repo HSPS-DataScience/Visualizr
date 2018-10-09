@@ -1,0 +1,13 @@
+---
+title: "Template"
+author: "John Wood"
+date: "10/4/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = F, message = F, warning = F, error = F, fig.height = 3, fig.width = 9.5, cache = F
+)
+```
+
