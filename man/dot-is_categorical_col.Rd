@@ -15,3 +15,7 @@ Boolean
 \description{
 Checks column data type for either character or factor
 }
+\examples{
+data \%>\%
+  select_if(.is_categorical_col)
+}
