@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
   cache = F
 )
 
-data <- x # REPLACE X WITH YOUR DATA
+# data <- x # REPLACE X WITH YOUR DATA
 
 ## data table
 DT::datatable(
