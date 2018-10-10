@@ -2,6 +2,7 @@ library(tidyverse)
 library(trelliscopejs)
 library(wordcloud)
 library(HSPSUtils) # install_github("HSPS-DataScience/HSPSUtils")
+                   # devtools::update_packages("HSPSUtils")
 
 knitr::opts_chunk$set(
   echo = F,
@@ -13,7 +14,7 @@ knitr::opts_chunk$set(
   cache = F
 )
 
-# data <- x # REPLACE X WITH YOUR DATA
+data <- x # REPLACE X WITH YOUR DATA
 
 ## data table
 DT::datatable(
@@ -69,17 +70,17 @@ DT::datatable(
 # }
 
 ## wordcloud of character variables
-data(stop_words)
-# make text string
-char_colnames <- data %>%
-  select_if(is.character) %>%
-  .select_non_id_columns() %>%
-  pull()
-data_frame(line = 1:length(text), text = text) %>%
-  unnest_tokens(word, text) %>%
-  anti_join(stop_words) %>%
-  count(word) %>%
-  with(wordcloud(word, n, max.words = 100, rot.per = 0))
+# data(stop_words)
+# # make text string
+# char_colnames <- data %>%
+#   select_if(is.character) %>%
+#   .select_non_id_columns() %>%
+#   pull()
+# data_frame(line = 1:length(text), text = text) %>%
+#   unnest_tokens(word, text) %>%
+#   anti_join(stop_words) %>%
+#   count(word) %>%
+#   with(wordcloud(word, n, max.words = 100, rot.per = 0))
 
 
 ## histogram of all numeric variables
@@ -98,14 +99,14 @@ ggplot(aes(x = value)) +
 
 
 ## time series
-data %>%
-  select_if(is.Date) %>%
-  gather_group_by_count() %>%
-  ungroup() %>%
-ggplot(aes(x = value, y = Count)) +
-  geom_line() +
-  geom_smooth(method = "loess") +
-  theme_bw()
+# data %>%
+#   select_if(is.Date) %>%
+#   gather_group_by_count() %>%
+#   ungroup() %>%
+# ggplot(aes(x = value, y = Count)) +
+#   geom_line() +
+#   geom_smooth(method = "loess") +
+#   theme_bw()
 
 # TODO: create function for error handling
 # TODO: create functions for every r chunk

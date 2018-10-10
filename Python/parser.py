@@ -1,6 +1,7 @@
 import itertools as it
 import re
 
+
 class Parser:
     """class to parse R scripts into standalone Rmd files
 

@@ -2,7 +2,7 @@
 #'
 #' @param rscript_path path to the rscript for Rmd conversion and redending
 #' @param new_filename path to new Rmd file being created
-#' @import reticulate
+#' @import HSPSUtils reticulate
 #' @export
 visualize <- function(rscript_path = "R/visualize_functions.R", new_filename = "test.Rmd") {
   reticulate::source_python("Python/parser.py")

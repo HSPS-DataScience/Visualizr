@@ -2,19 +2,16 @@
 % Please edit documentation in R/visualize.R
 \name{visualize}
 \alias{visualize}
-\title{Read in a tibble and generate summary statistics and visualizations}
+\title{Generate Rmarkdown report and Rmarkdown standalone file from a single command}
 \usage{
-visualize(data)
+visualize(rscript_path = "R/visualize_functions.R",
+  new_filename = "test.Rmd")
 }
 \arguments{
-\item{data}{A tibble}
-}
-\value{
-RMarkdown file with finished visualizations and summary statistics
+\item{rscript_path}{path to the rscript for Rmd conversion and redending}
+
+\item{new_filename}{path to new Rmd file being created}
 }
 \description{
-Read in a tibble and generate summary statistics and visualizations
-}
-\examples{
-visualize(tbl)
+Generate Rmarkdown report and Rmarkdown standalone file from a single command
 }
