@@ -6,10 +6,7 @@
 #' @import reticulate
 #' @export
 visualize <- function(new_filename = "./test.Rmd") {
-  parser <- p$run_parser(new_filename = new_filename)
-
-  # knit newly created Rmd file
-  rmarkdown::render(new_filename)
+  p$run_parser(new_filename = new_filename)
 }
 
 # global reference to parser (will be initialized in .onLoad)
