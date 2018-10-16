@@ -2,16 +2,17 @@
 % Please edit documentation in R/visualize.R
 \name{visualize}
 \alias{visualize}
-\title{Generate Rmarkdown report and Rmarkdown standalone file from a single command}
+\title{Generate Rmarkdown report and Rmarkdown standalone file from a single command.
+This function is a wrapper around \code{RParser}, a Python library developed
+for parsing R scripts into Rmarkdown.}
 \usage{
-visualize(rscript_path = "R/visualize_functions.R",
-  new_filename = "test.Rmd")
+visualize(new_filename = "./test.Rmd")
 }
 \arguments{
-\item{rscript_path}{path to the rscript for Rmd conversion and redending}
-
 \item{new_filename}{path to new Rmd file being created}
 }
 \description{
-Generate Rmarkdown report and Rmarkdown standalone file from a single command
+Generate Rmarkdown report and Rmarkdown standalone file from a single command.
+This function is a wrapper around \code{RParser}, a Python library developed
+for parsing R scripts into Rmarkdown.
 }
