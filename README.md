@@ -10,7 +10,7 @@ Visualizr is an R wrapper for [rparser](https://github.com/HSPS-DataScience/RPar
 * Visualizr: 
   + `library(devtools)` 
   + `devtools::install_github("HSPS-DataScience/HSPSUtils")` 
-  + `devtools::install_github("HSPS-DataScience/Visualizr") 
+  + `devtools::install_github("HSPS-DataScience/Visualizr")`
 * Update visualizr:
   + `devtools::update_packages("Visualizr")` 
   
