@@ -2,7 +2,7 @@
 % Please edit documentation in R/visualize.R
 \name{visualize}
 \alias{visualize}
-\title{Generate Rmarkdown report and Rmarkdown standalone file from a single command.
+\title{Generate standalone RMarkdown file from a single command based off of a pre-defined template.
 This function is a wrapper around \code{RParser}, a Python library developed
 for parsing R scripts into Rmarkdown.}
 \usage{
@@ -12,7 +12,5 @@ visualize(new_filename = "./test.Rmd")
 \item{new_filename}{path to new Rmd file being created}
 }
 \description{
-Generate Rmarkdown report and Rmarkdown standalone file from a single command.
-This function is a wrapper around \code{RParser}, a Python library developed
-for parsing R scripts into Rmarkdown.
+IMPORTANT: Make sure anaconda3 and rparser and installed before running visualize()
 }
