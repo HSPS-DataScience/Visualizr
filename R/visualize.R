@@ -8,7 +8,7 @@
 #' @import reticulate
 #' @export
 visualize <- function(new_filename = "./test.Rmd") {
-  # rparser requires Python 3.6 >=
+  # rparser requires Python 3.6 or greater
   tryCatch(
     expr = use_python("/anaconda3/bin/python"),
     error = function(e) {
